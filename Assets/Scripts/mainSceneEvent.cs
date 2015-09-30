@@ -6,6 +6,7 @@ public class mainSceneEvent : MonoBehaviour
 {
     public Button CSharpButton;
     public Button JavaButton;
+    public Text OutputText;
 
 	// Use this for initialization
 	void Start () {
@@ -24,6 +25,6 @@ public class mainSceneEvent : MonoBehaviour
 
     private void ClickCSharpButton()
     {
-        
+        OutputText.text = "This is output by c#.";
     }
 }
