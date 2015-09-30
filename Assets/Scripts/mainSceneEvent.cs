@@ -19,6 +19,11 @@ public class mainSceneEvent : MonoBehaviour
 
     public void Init()
     {
+        CSharpButton.onClick.AddListener(ClickCSharpButton);
+    }
+
+    private void ClickCSharpButton()
+    {
         
     }
 }
