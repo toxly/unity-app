@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using Assets.Scripts.Utils;
 using UnityEngine.UI;
@@ -10,10 +11,12 @@ namespace Assets.Scripts
         public Button CSharpButton;
         public Button JavaButton;
         public Text OutputText;
+        public static MainScene Instance;
 
         // Use this for initialization
         private void Start()
         {
+            Instance = this;
             Init();
         }
 
@@ -37,6 +40,11 @@ namespace Assets.Scripts
         private static void ClickJavaButton()
         {
             PlatformTools.NativeGetAppVersion();
+        }
+
+        public static void ShowJaveResult(string result)
+        {
+            Instance.OutputText.text = "This is output by java:\n"+result;
         }
     }
 }

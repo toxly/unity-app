@@ -9,7 +9,7 @@ namespace Assets.Scripts.Utils
         {
             Debug.Log("PlatformTools.PTGetAppVersion()");
 #if !UNITY_EDITOR && UNITY_ANDROID
-            AndroidJavaClass jc = new AndroidJavaClass("com.snow.unityapp.NativeBridge");
+            AndroidJavaClass jc = new AndroidJavaClass("com.snow.plugin.NativeBridge");
             jc.CallStatic("NativeGetAppVersion");
 #endif
         }
