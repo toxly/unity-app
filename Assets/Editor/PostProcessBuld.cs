@@ -30,7 +30,6 @@ public class PostProcessBuld {
         string AppPath = ExportProjectPath + "/" + AppFolderName + "/";
 
         // -- move assets
-        Debug.Log("Move assets to app/src/main/assets");
         if (Directory.Exists(AppPath + "app/src/main/assets"))
         {
             Directory.Delete(AppPath + "app/src/main/assets", true);
@@ -49,7 +48,6 @@ public class PostProcessBuld {
         File.Move(AppPath + "libs/unity-classes.jar", AppPath + "app/libs/unity-classes.jar");
 
         // -- move jni libs
-        Debug.Log("Move jni libs to app/src/main/jniLibs");
         if (Directory.Exists(AppPath + "app/src/main/jniLibs"))
         {
             Directory.Delete(AppPath + "app/src/main/jniLibs", true);
@@ -57,12 +55,12 @@ public class PostProcessBuld {
         Directory.Move(AppPath + "libs", AppPath + "app/src/main/jniLibs");
 
         // -- delete res
-        Debug.Log("Delete res");
         Directory.Delete(AppPath + "res", true);
 
         // -- delete src
-        Debug.Log("Delete src");
         Directory.Delete(AppPath + "src", true);
+
+        Debug.Log("OnPostProcessBuild finished.");
     }
 
     static void DoPostBuildForIos()
