@@ -24,5 +24,11 @@ namespace Assets.Scripts
             Debug.Log("C#: NotifyNativeGetAppVersion, result: " + result);
             MainScene.ShowJaveResult(result);
         }
+
+        public void NotifyNativeGetCppVersion(string result)
+        {
+            Debug.Log("C#: NotifyNativeGetCppVersion, result: " + result);
+            MainScene.ShowCppResult(result);
+        }
     }
 }

@@ -13,5 +13,13 @@ namespace Assets.Scripts.Utils
             jc.CallStatic("NativeGetAppVersion");
 #endif
         }
+
+        public static void NativeGetCppVersion()
+        {
+#if !UNITY_EDITOR && UNITY_ANDROID
+            AndroidJavaClass jc = new AndroidJavaClass("com.snow.plugin.NativeBridge");
+            jc.CallStatic("NativeGetCppVersion");
+#endif
+        }
     }
 }

@@ -18,6 +18,10 @@ public class MainActivity extends NativeActivity
 	private String tag = "UnityAPP";
 	protected UnityPlayer mUnityPlayer;		// don't change the name of this variable; referenced from native code
 
+	static {
+		System.loadLibrary("NativePlugin");
+	}
+
 	// Setup activity layout
 	@Override protected void onCreate (Bundle savedInstanceState)
 	{

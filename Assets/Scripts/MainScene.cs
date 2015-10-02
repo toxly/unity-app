@@ -11,6 +11,7 @@ namespace Assets.Scripts
     {
         public Button CSharpButton;
         public Button JavaButton;
+        public Button CppButton;
         public Text OutputText;
         public static MainScene Instance;
 
@@ -32,11 +33,17 @@ namespace Assets.Scripts
         {
             CSharpButton.onClick.AddListener(ClickCSharpButton);
             JavaButton.onClick.AddListener(ClickJavaButton);
+            CppButton.onClick.AddListener(ClickCppButton);
         }
 
         private void ClickCSharpButton()
         {
             OutputText.text = "This is output by c#.";
+        }
+
+        private void ClickCppButton()
+        {
+            PlatformTools.NativeGetCppVersion();
         }
 
         private static void ClickJavaButton()
@@ -47,6 +54,11 @@ namespace Assets.Scripts
         public static void ShowJaveResult(string result)
         {
             Instance.OutputText.text = "This is output by java:\n"+result;
+        }
+
+        public static void ShowCppResult(string result)
+        {
+            Instance.OutputText.text = "This is output by cpp:\n" + result;
         }
     }
 }

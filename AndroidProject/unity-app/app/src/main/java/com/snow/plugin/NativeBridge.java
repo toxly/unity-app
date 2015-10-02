@@ -27,7 +27,9 @@ public class NativeBridge {
 	private static String sysAvailableMem = "";
 	private static String sysTotalMem = "";
 	private static String externalIP = "";
-	
+
+	public static native String getCppVersion();
+
 	public static void Init(final Context pContext) {
 		Log.d(tag, "NativeBridge.Init()");
 		context = pContext.getApplicationContext();
@@ -42,6 +44,12 @@ public class NativeBridge {
 
 		// -- notify
 		NotifyNativeGetAppVersion();
+	}
+
+	public static void NativeGetCppVersion() {
+		Log.d(tag, "Java: call NativeGetCppVersion()");
+		String cppVersion = getCppVersion();
+		com.unity3d.player.UnityPlayer.UnitySendMessage("Main Camera", "NotifyNativeGetCppVersion", cppVersion);
 	}
 	
 	public static void NotifyNativeGetAppVersion() {

@@ -54,6 +54,8 @@ public class PostProcessBuld {
         }
         Directory.Move(AppPath + "libs", AppPath + "app/src/main/jniLibs");
 
+        File.Delete(AppPath + "app/src/main/jniLibs/armeabi-v7a/gdbserver");
+
         // -- delete res
         Directory.Delete(AppPath + "res", true);
 
