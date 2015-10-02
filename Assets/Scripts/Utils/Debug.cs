@@ -1,20 +1,18 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using Assets.Scripts.Utils;
 
-namespace Assets.Scripts.Utils
+public class Debug
 {
-    public class Debug
+    public static void Log(object message, UnityEngine.Object obj = null)
     {
-        public static void Log(object message, UnityEngine.Object obj = null)
+        if (GateKeeper.LogEnabled)
         {
-            if (GateKeeper.LogEnabled)
-            {
-                DateTime now = DateTime.Now;
-                string nowTime = now.ToString("[HH:mm:ss zz] ");
+            DateTime now = DateTime.Now;
+            string nowTime = now.ToString("[HH:mm:ss zz] ");
 
-                UnityEngine.Debug.Log(nowTime + message, obj);
-            }
+            UnityEngine.Debug.Log(nowTime + message, obj);
         }
     }
 }

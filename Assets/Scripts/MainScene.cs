@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using Assets.Scripts.Utils;
 using UnityEngine.UI;
 
@@ -18,6 +19,7 @@ namespace Assets.Scripts
         {
             Instance = this;
             Init();
+
         }
 
         // Update is called once per frame
