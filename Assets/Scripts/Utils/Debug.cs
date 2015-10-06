@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections;
 using Assets.Scripts.Utils;
 
+#if !UNITY_EDITOR
 public class Debug
 {
     public static void Log(object message, UnityEngine.Object obj = null)
@@ -16,3 +17,4 @@ public class Debug
         }
     }
 }
+#endif

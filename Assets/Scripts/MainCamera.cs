@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Assets.Scripts
 {
@@ -22,7 +23,14 @@ namespace Assets.Scripts
         public void NotifyNativeGetAppVersion(string result)
         {
             Debug.Log("C#: NotifyNativeGetAppVersion, result: " + result);
-            MainScene.ShowJaveResult(result);
+
+            string resultStr = "";
+            Dictionary<string, object> jsonDictionary = (Dictionary<string, object>)fastJSON.JSON.Parse(result);
+            foreach (KeyValuePair<string, object> kp in jsonDictionary)
+            {
+                resultStr += kp.Key + ": " + kp.Value.ToString() + "\n";
+            }
+            MainScene.ShowJaveResult(resultStr);
         }
 
         public void NotifyNativeGetCppVersion(string result)

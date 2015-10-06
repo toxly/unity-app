@@ -51,6 +51,12 @@
      <Compile Include="Assets\Scripts\Utils\Debug.cs" />
      <Compile Include="Assets\Scripts\Utils\GateKeeper.cs" />
      <Compile Include="Assets\Scripts\Utils\PlatformTools.cs" />
+     <Compile Include="Assets\Scripts\fastJSON\Formatter.cs" />
+     <Compile Include="Assets\Scripts\fastJSON\JSON.cs" />
+     <Compile Include="Assets\Scripts\fastJSON\JsonParser.cs" />
+     <Compile Include="Assets\Scripts\fastJSON\JsonSerializer.cs" />
+     <Compile Include="Assets\Scripts\fastJSON\Reflection.cs" />
+     <Compile Include="Assets\Scripts\fastJSON\SafeDictionary.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>F:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.8/Standalone/UnityEngine.UI.dll</HintPath>
  </Reference>

@@ -18,9 +18,9 @@ namespace Assets.Scripts
         // Use this for initialization
         private void Start()
         {
+            Debug.Log("C# run, version: " + GateKeeper.CSharpVersion);
             Instance = this;
             Init();
-
         }
 
         // Update is called once per frame
@@ -38,7 +38,7 @@ namespace Assets.Scripts
 
         private void ClickCSharpButton()
         {
-            OutputText.text = "This is output by c#.";
+            OutputText.text = "C#\nDLL Verion: " + GateKeeper.CSharpVersion;
         }
 
         private void ClickCppButton()
@@ -53,12 +53,12 @@ namespace Assets.Scripts
 
         public static void ShowJaveResult(string result)
         {
-            Instance.OutputText.text = "This is output by java:\n"+result;
+            Instance.OutputText.text = "Java\n"+result;
         }
 
         public static void ShowCppResult(string result)
         {
-            Instance.OutputText.text = "This is output by cpp:\n" + result;
+            Instance.OutputText.text = "C++\n" + result;
         }
     }
 }
