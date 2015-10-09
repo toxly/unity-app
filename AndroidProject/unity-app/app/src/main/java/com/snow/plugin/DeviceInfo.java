@@ -5,9 +5,10 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.provider.Settings;
+import android.telephony.TelephonyManager;
 import android.text.format.Formatter;
 import android.util.DisplayMetrics;
-import android.util.Log;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -46,8 +47,8 @@ public class DeviceInfo {
     private static void getAppInfo() {
         try {
             PackageInfo pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
-            jsonInfo.put("VersionName", pInfo.versionName);
-            jsonInfo.put("versionCode", pInfo.versionCode);
+            jsonInfo.put("Version Name", pInfo.versionName);
+            jsonInfo.put("version Code", pInfo.versionCode);
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         } catch (JSONException e) {
@@ -63,7 +64,7 @@ public class DeviceInfo {
         String sysAvailableMem = Formatter.formatFileSize(context, mi.availMem);
 
         try {
-            jsonInfo.put("AvailableMemory", sysAvailableMem);
+            jsonInfo.put("Available Memory", sysAvailableMem);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -90,7 +91,7 @@ public class DeviceInfo {
         String sysTotalMem = Formatter.formatFileSize(context, totalMemory);
 
         try {
-            jsonInfo.put("TotalMemory", sysTotalMem);
+            jsonInfo.put("Total Memory", sysTotalMem);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -134,10 +135,10 @@ public class DeviceInfo {
                 if (content.length() < 20) {
                     externalIP = content;
                 }
-                Log.i("ExternalIP: ", externalIP);
+                Debug.Log("External IP: " + externalIP);
             }
 
-            jsonInfo.put("ExternalIP", externalIP);
+            jsonInfo.put("External IP", externalIP);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -148,15 +149,39 @@ public class DeviceInfo {
         }
     }
 
+    public static String getAndroidID() {
+        String androidID = Settings.Secure.getString(Utils.activity().getContentResolver(), Settings.Secure.ANDROID_ID);
+        return androidID;
+    }
+
+    public static String getImei() {
+        TelephonyManager tm = (TelephonyManager) Utils.activity().getSystemService(Context.TELEPHONY_SERVICE);
+        String imei = tm.getDeviceId();
+        return imei;
+    }
+
     private static void getDeviceInfo() {
         try {
-            jsonInfo.put("DeviceType", Build.MODEL + "-" + Build.DEVICE + "-" + Build.MANUFACTURER);
-            jsonInfo.put("OsVersion", Build.DISPLAY + "-" + Build.VERSION.SDK_INT);
+            jsonInfo.put("Device Type", Build.MANUFACTURER + " - " + Build.MODEL + " (" + Build.DEVICE + ")");
+            jsonInfo.put("OS Version", "Android " + Build.VERSION.SDK_INT + " (" + Build.DISPLAY + ")");
+
+            if (Build.VERSION.SDK_INT >= 21) {
+                String abiStr = "";
+                for (int i = 0; i < Build.SUPPORTED_ABIS.length; i ++) {
+                    abiStr += Build.SUPPORTED_ABIS[i] + ":";
+                }
+                jsonInfo.put("Support ABIs", abiStr);
+            } else {
+                jsonInfo.put("Support ABI", Build.CPU_ABI.toString() + ":" + Build.CPU_ABI2.toString());
+            }
+
             jsonInfo.put("Serial", Build.SERIAL);
+            jsonInfo.put("Android ID", getAndroidID());
+            jsonInfo.put("IMEI", getImei());
 
             // -- 分辨率
             DisplayMetrics dm = new DisplayMetrics();
-            NativeBridge.activity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+            Utils.activity().getWindowManager().getDefaultDisplay().getMetrics(dm);
 
             int width = dm.widthPixels; // 宽度（PX）
             int height = dm.heightPixels; // 高度（PX）

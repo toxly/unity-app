@@ -1,18 +1,19 @@
 package com.snow.unityapp;
 
-import com.unity3d.player.UnityPlayer;
-
 import android.app.NativeActivity;
 import android.content.res.Configuration;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.snow.plugin.CrashHandler;
+import com.snow.plugin.Debug;
 import com.snow.plugin.NativeBridge;
+import com.snow.plugin.Utils;
+import com.unity3d.player.UnityPlayer;
 
 public class MainActivity extends NativeActivity {
     private String tag = "UnityAPP";
@@ -25,7 +26,7 @@ public class MainActivity extends NativeActivity {
     // Setup activity layout
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d(tag, "onCreate()");
+        Debug.Log("onCreate()");
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
 
@@ -41,6 +42,11 @@ public class MainActivity extends NativeActivity {
         mUnityPlayer.requestFocus();
 
         NativeBridge.Init(this);
+
+        Utils.init(this);
+
+        // -- Add uncatched crash
+        CrashHandler.getInstance().init(this);
     }
 
     // Quit Unity
