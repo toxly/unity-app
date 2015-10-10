@@ -23,7 +23,7 @@ public class NativeBridge {
         // -- notify
         com.unity3d.player.UnityPlayer.UnitySendMessage("Main Camera", "NotifyNativeGetAppVersion", notifyResult);
 
-//        ActivityManager.StartJavaConsoleActivity();
+        ActivityManager.StartJavaConsoleActivity();
     }
 
     public static void NativeGetCppVersion() {
