@@ -16,10 +16,12 @@ public class Utils {
     public static String tag = "UnityApp";
     private static Handler appHandler;
     private static Context context;
+    public static String packageName = "";
 
     public static void init(final Context pContext) {
         context = pContext;
         appHandler = new Handler(context.getMainLooper());
+        packageName = context.getApplicationInfo().packageName;
     }
 
     public static MainActivity activity() {

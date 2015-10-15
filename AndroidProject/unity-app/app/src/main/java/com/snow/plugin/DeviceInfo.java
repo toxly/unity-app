@@ -9,6 +9,7 @@ import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.format.Formatter;
 import android.util.DisplayMetrics;
+import android.util.Log;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -23,6 +24,10 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Created by Snow on 2015-10-4.
@@ -35,9 +40,10 @@ public class DeviceInfo {
         context = pContext;
 
         getAppInfo();
-        getSystemAvailableMemInfo();
-        getSystemTotalMemInfo();
         getSystemCPUInfo();
+        getSystemTotalMemInfo();
+        getSystemAvailableMemInfo();
+        getSelfMemInfo();
 //        getExternalIP();
         getDeviceInfo();
 
@@ -61,12 +67,41 @@ public class DeviceInfo {
         ActivityManager.MemoryInfo mi = new ActivityManager.MemoryInfo();
         am.getMemoryInfo(mi);
 
-        String sysAvailableMem = Formatter.formatFileSize(context, mi.availMem);
+//        String sysAvailableMem = Formatter.formatFileSize(context, mi.availMem);
 
         try {
-            jsonInfo.put("Available Memory", sysAvailableMem);
+            jsonInfo.put("System Available Memory", mi.availMem);
+            jsonInfo.put("System Low Memory Mode", mi.lowMemory);
+            jsonInfo.put("System Low Memory Threshold", mi.threshold);
         } catch (JSONException e) {
             e.printStackTrace();
+        }
+    }
+
+    private static void getSelfMemInfo() {
+        ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningAppProcessInfo> runningAppProcesses = am.getRunningAppProcesses();
+
+        int pid = 0;
+        for (ActivityManager.RunningAppProcessInfo runningAppProcessInfo : runningAppProcesses)
+        {
+            if (runningAppProcessInfo.processName.equals(Utils.packageName)) {
+                Debug.Log("App PID is: " + pid);
+                pid = runningAppProcessInfo.pid;
+                break;
+            }
+        }
+
+        int arrPid[] = new int[1];
+        arrPid[0] = pid;
+        android.os.Debug.MemoryInfo[] memoryInfoArray = am.getProcessMemoryInfo(arrPid);
+        for(android.os.Debug.MemoryInfo pidMemoryInfo: memoryInfoArray)
+        {
+            try {
+                jsonInfo.put("App Total Pss Memory", pidMemoryInfo.getTotalPss());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -88,10 +123,8 @@ public class DeviceInfo {
             e.printStackTrace();
         }
 
-        String sysTotalMem = Formatter.formatFileSize(context, totalMemory);
-
         try {
-            jsonInfo.put("Total Memory", sysTotalMem);
+            jsonInfo.put("System Total Memory", totalMemory);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -168,11 +201,11 @@ public class DeviceInfo {
             if (Build.VERSION.SDK_INT >= 21) {
                 String abiStr = "";
                 for (int i = 0; i < Build.SUPPORTED_ABIS.length; i ++) {
-                    abiStr += Build.SUPPORTED_ABIS[i] + ":";
+                    abiStr += Build.SUPPORTED_ABIS[i] + ";";
                 }
                 jsonInfo.put("Support ABIs", abiStr);
             } else {
-                jsonInfo.put("Support ABI", Build.CPU_ABI.toString() + ":" + Build.CPU_ABI2.toString());
+                jsonInfo.put("Support ABI", Build.CPU_ABI.toString() + ";" + Build.CPU_ABI2.toString());
             }
 
             jsonInfo.put("Serial", Build.SERIAL);
