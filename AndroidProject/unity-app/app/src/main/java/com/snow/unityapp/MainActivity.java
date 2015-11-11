@@ -52,6 +52,7 @@ public class MainActivity extends NativeActivity {
     // Quit Unity
     @Override
     protected void onDestroy() {
+        Debug.Log("onDestroy()");
         mUnityPlayer.quit();
         super.onDestroy();
     }
@@ -59,6 +60,7 @@ public class MainActivity extends NativeActivity {
     // Pause Unity
     @Override
     protected void onPause() {
+        Debug.Log("onPause()");
         super.onPause();
         mUnityPlayer.pause();
     }
@@ -66,6 +68,7 @@ public class MainActivity extends NativeActivity {
     // Resume Unity
     @Override
     protected void onResume() {
+        Debug.Log("onResume()");
         super.onResume();
         mUnityPlayer.resume();
     }
@@ -80,6 +83,7 @@ public class MainActivity extends NativeActivity {
     // Notify Unity of the focus change.
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
+        Debug.Log("onWindowFocusChanged()" + hasFocus);
         super.onWindowFocusChanged(hasFocus);
         mUnityPlayer.windowFocusChanged(hasFocus);
     }

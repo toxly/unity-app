@@ -19,7 +19,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_4_6_8;UNITY_4_6;UNITY_ANDROID;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_IL2CPP;INCLUDE_WP8SUPPORT;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_4_6_FEATURES;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;UNITY5_SCRIPTING_IN_UNITY4;ENABLE_CACHING;ENABLE_CLOTH;UNITY_ANDROID_API;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_MONO;DEVELOPMENT_BUILD;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_4_6_8;UNITY_4_6;UNITY_IPHONE;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_IL2CPP;INCLUDE_WP8SUPPORT;ENABLE_WWW;ENABLE_IMAGEEFFECTS;UNITY_IPHONE_API;ENABLE_4_6_FEATURES;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;ENABLE_NETWORK;ENABLE_PHYSICS;UNITY5_SCRIPTING_IN_UNITY4;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_GAMECENTER;UNITY_IOS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_MONO;DEVELOPMENT_BUILD;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -46,6 +46,12 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Helpshift\Example\HelpshiftExampleScript.cs" />
+     <Compile Include="Assets\Helpshift\Plugins\Android\Helpshiftandroid.cs" />
+     <Compile Include="Assets\Helpshift\Plugins\HSMiniJSON.cs" />
+     <Compile Include="Assets\Helpshift\Plugins\Helpshift.cs" />
+     <Compile Include="Assets\Helpshift\Plugins\HelpshiftConfig.cs" />
+     <Compile Include="Assets\Helpshift\Plugins\iOS\HelpshiftiOS.cs" />
      <Compile Include="Assets\Scripts\MainCamera.cs" />
      <Compile Include="Assets\Scripts\MainScene.cs" />
      <Compile Include="Assets\Scripts\Utils\Debug.cs" />
@@ -57,6 +63,98 @@
      <Compile Include="Assets\Scripts\fastJSON\JsonSerializer.cs" />
      <Compile Include="Assets\Scripts\fastJSON\Reflection.cs" />
      <Compile Include="Assets\Scripts\fastJSON\SafeDictionary.cs" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-fi\values-fi.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__screenshot_preview.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-sv\values-sv.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-no\values-no.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-ko\values-ko.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__csat_holder.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-nl\values-nl.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-ja\values-ja.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__messages_list_footer.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__msg_screenshot_status.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\drawable\hs__actionbar_compat_selectable_item_background.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__simple_search_view.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-da\values-da.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\Release-3.12.0.txt" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__new_conversation_fragment.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__question_fragment.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__messages_fragment.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-land\values-land.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__msg_review_accepted.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\menu\hs__messages_menu.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\menu\hs__search_on_conversation.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-fr\values-fr.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\menu\hs__actionbar_indeterminate_progress.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-pl\values-pl.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__question.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-pt-rBR\values-pt-rBR.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__msg_review_request.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-it\values-it.xml" />
+     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__badge_layout.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-tr\values-tr.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-sk\values-sk.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__simple_list_item_3.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__msg_attachment_generic.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__questions_list.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values\values.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__faqs.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-zh-rTW\values-zh-rTW.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__local_msg_request_screenshot.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__csat_view.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\drawable\hs__actionbar_compat_item_focused.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-ca\values-ca.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__simple_list_item_1.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-in\values-in.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__msg_attachment_image.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__msg_txt_user.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-hr\values-hr.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__search_result_header.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-th\values-th.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-de\values-de.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-ru\values-ru.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__msg_request_screenshot.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-zh-rCN\values-zh-rCN.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\menu\hs__faqs_fragment.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\menu\hs__add_conversation_menu.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-el\values-el.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\proguard-project.txt" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__no_faqs.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__video_loading_progress.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__actionbar_compat.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__msg_confirmation_box.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\drawable\hs__edit_text_compat_background.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-ro\values-ro.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__search_result_footer.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-v14\values-v14.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-vi\values-vi.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-iw\values-iw.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__actionbar_indeterminate_progress.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\custom_rules_helpshift.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\menu\hs__show_conversation.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__section.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\R.txt" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-sl\values-sl.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-hu\values-hu.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__search_result_activity.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__actionbar_compat_home.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-sw720dp\values-sw720dp.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-uk\values-uk.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__conversation.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-sw600dp\values-sw600dp.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-ms\values-ms.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\build.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-cs\values-cs.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-ar\values-ar.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__msg_confirmation_status.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__webview_custom_content.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-es\values-es.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__csat_dialog.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__search_list_footer.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\layout\hs__msg_txt_admin.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\res\values-v21\values-v21.xml" />
+     <None Include="Assets\Plugins\Android\helpshift\AndroidManifest.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>F:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.8/Standalone/UnityEngine.UI.dll</HintPath>
  </Reference>

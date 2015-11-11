@@ -94,8 +94,8 @@
     <orderEntry type="library" exported="" name="commons-net-3.3" level="project" />
     <orderEntry type="library" exported="" name="support-v4-23.0.1" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-23.0.1" level="project" />
-    <orderEntry type="library" exported="" name="org.jbundle.util.osgi.wrapped.org.apache.http.client-4.1.2" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-23.0.1" level="project" />
+    <orderEntry type="library" exported="" name="org.jbundle.util.osgi.wrapped.org.apache.http.client-4.1.2" level="project" />
     <orderEntry type="library" exported="" name="usb-android-23" level="project" />
     <orderEntry type="library" exported="" name="effects-android-23" level="project" />
     <orderEntry type="library" exported="" name="maps-android-23" level="project" />

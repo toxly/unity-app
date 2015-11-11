@@ -45,7 +45,7 @@ public class Utils {
     }
 
     public static void restartGame() {
-        Debug.Log("restartGmae after 500ms.");
+        Debug.Log("restartGame after 500ms.");
         Intent intent = new Intent(context.getApplicationContext(), MainActivity.class);
         PendingIntent restartIntent = PendingIntent.getActivity(
                 context.getApplicationContext(), 0, intent,

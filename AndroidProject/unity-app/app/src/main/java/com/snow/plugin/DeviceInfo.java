@@ -7,9 +7,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
-import android.text.format.Formatter;
 import android.util.DisplayMetrics;
-import android.util.Log;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -24,10 +22,7 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Collection;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 /**
  * Created by Snow on 2015-10-4.
@@ -52,9 +47,11 @@ public class DeviceInfo {
 
     private static void getAppInfo() {
         try {
-            PackageInfo pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+            String packageName = context.getPackageName();
+            PackageInfo pInfo = context.getPackageManager().getPackageInfo(packageName, 0);
+            jsonInfo.put("Package Name", packageName);
             jsonInfo.put("Version Name", pInfo.versionName);
-            jsonInfo.put("version Code", pInfo.versionCode);
+            jsonInfo.put("Version Code", pInfo.versionCode);
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         } catch (JSONException e) {
@@ -83,8 +80,7 @@ public class DeviceInfo {
         List<ActivityManager.RunningAppProcessInfo> runningAppProcesses = am.getRunningAppProcesses();
 
         int pid = 0;
-        for (ActivityManager.RunningAppProcessInfo runningAppProcessInfo : runningAppProcesses)
-        {
+        for (ActivityManager.RunningAppProcessInfo runningAppProcessInfo : runningAppProcesses) {
             if (runningAppProcessInfo.processName.equals(Utils.packageName)) {
                 Debug.Log("App PID is: " + pid);
                 pid = runningAppProcessInfo.pid;
@@ -95,8 +91,7 @@ public class DeviceInfo {
         int arrPid[] = new int[1];
         arrPid[0] = pid;
         android.os.Debug.MemoryInfo[] memoryInfoArray = am.getProcessMemoryInfo(arrPid);
-        for(android.os.Debug.MemoryInfo pidMemoryInfo: memoryInfoArray)
-        {
+        for (android.os.Debug.MemoryInfo pidMemoryInfo : memoryInfoArray) {
             try {
                 jsonInfo.put("App Total Pss Memory", pidMemoryInfo.getTotalPss());
             } catch (JSONException e) {
@@ -200,7 +195,7 @@ public class DeviceInfo {
 
             if (Build.VERSION.SDK_INT >= 21) {
                 String abiStr = "";
-                for (int i = 0; i < Build.SUPPORTED_ABIS.length; i ++) {
+                for (int i = 0; i < Build.SUPPORTED_ABIS.length; i++) {
                     abiStr += Build.SUPPORTED_ABIS[i] + ";";
                 }
                 jsonInfo.put("Support ABIs", abiStr);
