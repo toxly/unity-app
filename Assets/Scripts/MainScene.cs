@@ -34,6 +34,16 @@ namespace Assets.Scripts
         // -- https://developers.helpshift.com/unity/sdk-configuration-ios/#install-config
         public void Init()
         {
+            IntPtr clazzPtr = AndroidJNI.FindClass("com.snow.dbt");
+            if (clazzPtr != IntPtr.Zero)
+            {
+                Debug.Log("=====================================Got");
+            }
+            else
+            {
+                Debug.Log("=====================================Not Got");
+            }
+
             CSharpButton.onClick.AddListener(ClickCSharpButton);
             JavaButton.onClick.AddListener(ClickJavaButton);
             CppButton.onClick.AddListener(ClickCppButton);
@@ -130,7 +140,18 @@ namespace Assets.Scripts
             configMap.Add("Level", "91");
             configMap.Add("Spend", "48.55 USD");
             configMap.Add("Device Timestamp", DateTime.UtcNow.ToLongTimeString());
-            configMap.Add(HelpshiftSdk.HSTAGSKEY, new string[] { "vip","tier5","hero" });
+
+            string tagStr = "";
+            tagStr += "new user,";
+            tagStr += "new user,";
+            if (!tagStr.Equals(""))
+            {
+                tagStr = tagStr.Substring(0, tagStr.Length - 1);
+            }
+            string[] tags = tagStr.Split(',');
+
+
+            configMap.Add(HelpshiftSdk.HSTAGSKEY, tags);
             configD.Add(HelpshiftSdk.HSCUSTOMMETADATAKEY, configMap);
             help.showFAQs(configD);
         }
