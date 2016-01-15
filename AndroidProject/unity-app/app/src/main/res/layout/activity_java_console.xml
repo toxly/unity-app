@@ -17,19 +17,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|top"
-        android:text="New Button"/>
+        android:text="Test"/>
 
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right|top"
-        android:text="New Button"/>
+        android:text="Back"/>
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="452dp"
         android:layout_gravity="bottom"
+        android:lineSpacingExtra="5dp"
+        android:padding="5dp"
+        android:textSize="12dp"
         android:text="@string/default_output"/>
 </FrameLayout>

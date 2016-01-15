@@ -1,0 +1,28 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="#00000000"
+             tools:context=".BootActivity">
+<ImageView
+    android:id="@+id/bootBGImage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00ffffff"
+    android:contentDescription="@string/boot_tips"/>
+
+    <TextView
+        android:id="@+id/bootText"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+        android:background="#80000000"
+        android:textSize="16sp"
+        android:textColor="#ffffff"
+        android:shadowColor="#000000"
+        android:shadowRadius="3"
+        android:shadowDx="0"
+        android:shadowDy="3"
+        android:gravity="center"
+        android:text="@string/boot_tips"/>
+</FrameLayout>

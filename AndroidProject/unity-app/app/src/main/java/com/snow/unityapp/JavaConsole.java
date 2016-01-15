@@ -1,6 +1,7 @@
 package com.snow.unityapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -8,9 +9,12 @@ import android.widget.TextView;
 
 import com.snow.plugin.Debug;
 import com.snow.plugin.Telnet;
+import com.snow.plugin.Utils;
 
 public class JavaConsole extends Activity {
     private View telnetButton;
+    private View testButton;
+    private View backButton;
     public static TextView outputText;
 
     @Override
@@ -21,6 +25,8 @@ public class JavaConsole extends Activity {
         setContentView(R.layout.activity_java_console);
 
         telnetButton = findViewById(R.id.button);
+        testButton = findViewById(R.id.button2);
+        backButton = findViewById(R.id.button3);
         outputText = (TextView)findViewById(R.id.textView);
 
         telnetButton.setOnClickListener(new View.OnClickListener() {
@@ -31,6 +37,27 @@ public class JavaConsole extends Activity {
 
                 NetTask netTask = new NetTask();
                 netTask.execute();
+            }
+        });
+
+        testButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Debug.Log("Start test onClick().");
+                outputText.setText("Click Test.\n");
+
+                Intent sayHelloIntent=new Intent(Utils.activity(),BootActivity.class);
+                sayHelloIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                Utils.activity().startActivity(sayHelloIntent);
+            }
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Debug.Log("Start back onClick().");
+                finish();
             }
         });
     }

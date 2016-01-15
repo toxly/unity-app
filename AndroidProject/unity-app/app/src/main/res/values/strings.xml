@@ -5,4 +5,5 @@
 
   <string name="telnet_button">Telnet</string>
   <string name="default_output">Output</string>
+  <string name="boot_tips">Unity App Started</string>
 </resources>
